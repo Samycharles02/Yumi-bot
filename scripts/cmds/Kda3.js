@@ -263,9 +263,18 @@ async function getRandomVideo() {
       "https://drive.google.com/uc?export=download&id=1HhFPMOMXI7DDKc371C-12A0yfC0101x7",
       "https://drive.google.com/uc?export=download&id=1JNRfPMJe1_SodueqhMVf4so0-vjWaK9V",
       "https://drive.google.com/uc?export=download&id=1Jjy85bIGE9efsUIlmHykEistAquEB9oT",
-      "https://drive.google.com/uc?export=download&id=1JoXCYZz4YoKpWe809ttUaaSsJdsCJZNf",
-      "https://drive.google.com/uc?export=download&id=1Ko-ScBYddulpKX4I4xS7BRkndIaZZ3gT",
-      "https://drive.google.com/uc?export=download&id=1LU4PTBFjWlhgzP2HiiJX_Esw2iIq7Zpj",
-      "https://drive.google.com/uc?export=download&id=1LaM2kIlZUdA_UbCzX8s92nxcqEJieHLN",
-      "https://drive.google.com/uc?export=download&id=1LcClA0b5Qih_tIv_wVRUsWX9gk3bVmzj",
-      "https://drive.google.com/uc?export=download&id=1LgV
+     ];
+
+  const availableVideos = link.filter(video => !sentVideos.includes(video));
+
+  if (availableVideos.length === 0) {
+    sentVideos = [];
+  }
+
+  const randomIndex = Math.floor(Math.random() * availableVideos.length);
+  const randomVideo = availableVideos[randomIndex];
+
+  sentVideos.push(randomVideo);
+
+  return randomVideo;
+}
